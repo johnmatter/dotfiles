@@ -12,10 +12,13 @@ else
 end
 # <<< conda initialize <<<
 
-set -gx PATH /opt/homebrew/bin /opt/homebrew/sbin $PATH
+set host (hostname)
+set host_config ~/.config/fish/conf.d/hostname-$host.fish
+
+if test -f $host_config
+    source $host_config
+end
 
 # shortcuts
 function vi; nvim $argv; end
-function workspace; cd ~/workspace; end
-function madrona-clap; cd ~/Music/madrona/clap/; end
-function madrona-vm; cd ~/Music/madrona-vm; end
+function vim; nvim $argv; end
